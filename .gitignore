@@ -153,5 +153,8 @@ fabric.properties
 # Security files
 coursework/security/
 
+# Personal notes
+coursework/notes/
+
 # Local Database
 db.sqlite3
