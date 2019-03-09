@@ -3,6 +3,7 @@ import graphene
 from polls.models import Question
 from polls.api.types import QuestionType
 from polls.api.types import CustomType
+from polls.api.mutations import MyMutations
 
 
 class Query(graphene.ObjectType):
@@ -43,4 +44,7 @@ class Query(graphene.ObjectType):
         return None
 
 
-schema = graphene.Schema(query=Query)
+schema = graphene.Schema(
+    query=Query,
+    mutation=MyMutations
+)
