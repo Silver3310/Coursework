@@ -19,4 +19,9 @@ urlpatterns = [
         views.DeleteView.as_view(),
         name='delete'
     ),
+    re_path(
+        r'^(?P<pk>[0-9]+)/results/$',
+        views.ResultView.as_view(),
+        name='result'
+    ),
 ]

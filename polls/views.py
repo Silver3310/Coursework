@@ -1,6 +1,8 @@
 from django.views import generic
+from django.views.generic.base import TemplateResponseMixin
 
 from .models import Question
+from .models import Choice
 from .mixins import RequireLoginMixin
 
 
@@ -26,3 +28,19 @@ class DetailView(generic.DetailView):
 class DeleteView(generic.DeleteView):
     model = Question
     success_url = '/polls/'
+
+
+class ResultView(TemplateResponseMixin, generic.View):
+    """
+    TemplateResponseMixin provides render_to_response and template_name
+    """
+    template_name = 'polls/results.html'
+
+    @staticmethod
+    def get_queryset(question_id):
+        return Question.objects.get(pk=question_id)
+
+    def get(self, request, pk):
+        queryset = self.get_queryset(pk)
+        context = {'question': queryset}
+        return self.render_to_response(context)
