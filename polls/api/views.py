@@ -3,9 +3,11 @@ from rest_framework.response import Response
 
 from polls.models import Question, Choice
 from .serializers import QuestionSerializer, ChoiceSerializer
+from .authentication import AdminOnlyAuth
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
+    authentication_classes = (AdminOnlyAuth,)
     queryset = Question.objects.all().order_by('-pub_date')
     serializer_class = QuestionSerializer
 

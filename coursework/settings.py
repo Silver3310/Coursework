@@ -119,3 +119,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# always demand usernames and passwords
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'polls.api.authentication.AdminOnlyAuth',
+#     )
+# }
