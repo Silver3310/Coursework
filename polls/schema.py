@@ -1,25 +1,9 @@
 from graphene_django import DjangoObjectType
 import graphene
 
-from .models import Question, Choice
-
-
-class QuestionType(DjangoObjectType):
-    class Meta:
-        model = Question
-
-
-'''
-# in the case we want to create our own types
-class QuestionType(graphene.ObjectType):
-    question_text = graphene.string()
-    pub_date = graphene.types.datetime.DateTime()
-'''
-
-
-class ChoiceType(DjangoObjectType):
-    class Meta:
-        model = Choice
+from .models import Question
+from .types import QuestionType
+from .types import CustomType
 
 
 class Query(graphene.ObjectType):
@@ -28,6 +12,10 @@ class Query(graphene.ObjectType):
     # we expect a user to give us id (int)
     question = graphene.Field(
         QuestionType,
+        id=graphene.Int()
+    )
+    custom_question = graphene.Field(
+        CustomType,
         id=graphene.Int()
     )
 
@@ -39,6 +27,20 @@ class Query(graphene.ObjectType):
 
         if qid is not None:
             return Question.objects.get(pk=qid)
+        return None
+
+    def resolve_custom_question(self, info, **kwargs):
+        qid = kwargs.get('id')
+
+        cq = CustomType()
+        if qid is not None:
+            question = Question.objects.get(pk=qid)
+            # we don't define our question_str here
+            # because it has its own built-in resolver
+            # on the custom type
+            cq.question = question
+            cq.message = 'Query Succeeded!'
+            return cq
         return None
 
 
