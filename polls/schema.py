@@ -1,0 +1,45 @@
+from graphene_django import DjangoObjectType
+import graphene
+
+from .models import Question, Choice
+
+
+class QuestionType(DjangoObjectType):
+    class Meta:
+        model = Question
+
+
+'''
+# in the case we want to create our own types
+class QuestionType(graphene.ObjectType):
+    question_text = graphene.string()
+    pub_date = graphene.types.datetime.DateTime()
+'''
+
+
+class ChoiceType(DjangoObjectType):
+    class Meta:
+        model = Choice
+
+
+class Query(graphene.ObjectType):
+    # these attributes are how we name resolvers
+    all_questions = graphene.List(QuestionType)
+    # we expect a user to give us id (int)
+    question = graphene.Field(
+        QuestionType,
+        id=graphene.Int()
+    )
+
+    def resolve_all_questions(self, info):
+        return Question.objects.all()
+
+    def resolve_question(self, info, **kwargs):
+        qid = kwargs.get('id')
+
+        if qid is not None:
+            return Question.objects.get(pk=qid)
+        return None
+
+
+schema = graphene.Schema(query=Query)

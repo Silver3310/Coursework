@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from graphene_django.views import GraphQLView
 
 
 from .security import safe_urls
@@ -39,4 +40,10 @@ urlpatterns = [
         safe_urls.admin_url,
         admin.site.urls
     ),
+    path(
+        'graphql/',
+        GraphQLView.as_view(
+            graphiql=True
+        )
+    )
 ]
