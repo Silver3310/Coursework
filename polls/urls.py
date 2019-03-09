@@ -20,8 +20,8 @@ urlpatterns = [
         name='delete'
     ),
     re_path(
-        r'^(?P<pk>[0-9]+)/results/$',
-        views.ResultView.as_view(),
-        name='result'
+        r'^(?P<pk>[0-9]+)/vote/$',
+        views.SwitchboardView.as_view(),
+        name='vote_result'
     ),
 ]
