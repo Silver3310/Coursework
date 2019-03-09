@@ -1,9 +1,13 @@
 from django.views import generic
 
 from .models import Question
+from .mixins import RequireLoginMixin
 
 
-class IndexView(generic.ListView):
+class IndexView(RequireLoginMixin, generic.ListView):
+    """
+    Whenever this view launches, RequireLoginMixin will now be checked for methods
+    """
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
