@@ -122,5 +122,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 GRAPHENE = {
-    'SCHEMA': 'polls.schema.schema'
+    'SCHEMA': 'polls.api.schema.schema'
 }

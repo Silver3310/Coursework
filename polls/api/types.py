@@ -1,7 +1,7 @@
 import graphene
 from graphene_django import DjangoObjectType
 
-from .models import Question, Choice
+from polls.models import Question, Choice
 
 
 class QuestionType(DjangoObjectType):

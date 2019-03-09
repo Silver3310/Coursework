@@ -1,9 +1,8 @@
-from graphene_django import DjangoObjectType
 import graphene
 
-from .models import Question
-from .types import QuestionType
-from .types import CustomType
+from polls.models import Question
+from polls.api.types import QuestionType
+from polls.api.types import CustomType
 
 
 class Query(graphene.ObjectType):
