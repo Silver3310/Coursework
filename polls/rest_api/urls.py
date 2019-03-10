@@ -1,6 +1,6 @@
 from rest_framework import routers
 
-from polls.api import views
+from polls.rest_api import views
 
 
 router = routers.DefaultRouter()

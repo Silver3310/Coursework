@@ -19,7 +19,7 @@ from django.contrib.auth import views as auth_views
 
 
 from .security import safe_urls
-from polls.api.urls import router
+from polls.rest_api.urls import router
 
 urlpatterns = [
     path(
@@ -41,11 +41,11 @@ urlpatterns = [
         admin.site.urls
     ),
     path(
-        'api/',
+        'rest_api/',
         include(router.urls),
     ),
     path(
-        'api/',
+        'rest_api/',
         include(
             'rest_framework.urls',
             namespace='rest_framework'

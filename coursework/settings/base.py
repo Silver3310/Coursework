@@ -122,6 +122,6 @@ STATIC_URL = '/static/'
 # always demand usernames and passwords
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'polls.api.authentication.AdminOnlyAuth',
+#         'polls.rest_api.authentication.AdminOnlyAuth',
 #     )
 # }
