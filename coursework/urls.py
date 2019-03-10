@@ -20,6 +20,8 @@ from graphene_django.views import GraphQLView
 
 
 from .security import safe_urls
+from polls.rest_api.urls import router
+
 
 urlpatterns = [
     path(
@@ -44,6 +46,17 @@ urlpatterns = [
         'graphql/',
         GraphQLView.as_view(
             graphiql=True
+        )
+    ),
+    path(
+        'rest_api/',
+        include(router.urls),
+    ),
+    path(
+        'rest_api/',
+        include(
+            'rest_framework.urls',
+            namespace='rest_framework'
         )
     )
 ]

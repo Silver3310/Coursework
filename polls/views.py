@@ -60,10 +60,14 @@ class VoteView(generic.View):
             'choice',
             None
         )
-        queryset = get_object_or_404(Choice, id=choice_id)
-        queryset.votes += 1
-        queryset.save()
-        return redirect(reverse('vote_result', kwargs={'pk': question_id}))
+        try:
+            queryset = self.get_queryset(choice_id)
+        except (KeyError, Choice.DoesNotExist):
+            return redirect(reverse('detail', kwargs={'pk': question_id}))
+        else:
+            queryset.votes += 1
+            queryset.save()
+            return redirect(reverse('vote_result', kwargs={'pk': question_id}))
 
 
 class SwitchboardView(generic.View):
