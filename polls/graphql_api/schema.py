@@ -1,9 +1,9 @@
 import graphene
 
 from polls.models import Question
-from polls.api.types import QuestionType
-from polls.api.types import CustomType
-from polls.api.mutations import MyMutations
+from polls.graphql_api.types import QuestionType
+from polls.graphql_api.types import CustomType
+from polls.graphql_api.mutations import MyMutations
 
 
 class Query(graphene.ObjectType):

@@ -3,7 +3,7 @@ from django.utils.timezone import now
 import graphene
 
 from polls.models import Question
-from polls.api.types import QuestionType
+from polls.graphql_api.types import QuestionType
 
 
 class CreateQuestion(graphene.Mutation):
