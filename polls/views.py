@@ -49,6 +49,9 @@ class ResultView(TemplateResponseMixin, generic.View):
 
 
 class VoteView(generic.View):
+    """
+    A view to vote for a particular choice in a question
+    """
 
     @staticmethod
     def get_queryset(choice_id):
@@ -71,6 +74,9 @@ class VoteView(generic.View):
 
 
 class SwitchboardView(generic.View):
+    """
+    Combines two views, ResultView for GET requests, VoteView for POST requests
+    """
 
     @staticmethod
     def get(request, pk):

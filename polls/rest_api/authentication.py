@@ -5,6 +5,7 @@ from rest_framework import exceptions
 
 
 class AdminOnlyAuth(authentication.BaseAuthentication):
+    """Allows only admins to authenticate"""
 
     def authenticate(self, request):
 
