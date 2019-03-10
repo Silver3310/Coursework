@@ -1,0 +1,23 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+aniso8601 = "*"
+djangorestframework = "*"
+graphene = "*"
+graphene-django = "*"
+graphql-core = "*"
+graphql-relay = "*"
+promise = "*"
+pytz = "*"
+singledispatch = "*"
+six = "*"
+Django = "*"
+Rx = "*"
+
+[requires]
+python_version = "3.6"
