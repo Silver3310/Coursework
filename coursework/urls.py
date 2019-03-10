@@ -49,11 +49,11 @@ urlpatterns = [
         )
     ),
     path(
-        'rest_api/',
+        'api/',
         include(router.urls),
     ),
     path(
-        'rest_api/',
+        'api/',
         include(
             'rest_framework.urls',
             namespace='rest_framework'
