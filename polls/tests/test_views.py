@@ -1,6 +1,5 @@
 from django.test import TestCase
 from django.test import RequestFactory
-from django.urls import reverse
 
 from model_mommy import mommy
 
@@ -60,6 +59,3 @@ class TestVoteView(TestCase):
             response.status_code,
             302
         )
-
-
-
